@@ -9,15 +9,14 @@ from app.forms import ResetPasswordRequestForm, PostForm, ThemeForm
 from app.email import send_password_reset_email
 
 from app.forms import ResetPasswordForm
-from app.models import Post, Theme, UserRoles
+from app.models import Post, Theme, UserRoles, Country, UserCountries
 
 
 
 @app.route('/')
 @app.route('/index')
-@login_required
 def index():
-    user = {'username': 'Miguel'}
+    user = {'username': 'French Cluster'}
     posts = [
         {
             'author': {'username': 'John'},

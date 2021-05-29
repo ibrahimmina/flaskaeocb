@@ -66,6 +66,8 @@ class UserRoles(db.Model):
 class Country(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(50), unique=True)
+    code = db.Column(db.String(3), unique=True)
+    status = db.Column(db.Integer())
 
 # Define UserRoles model
 class UserCountries(db.Model):
