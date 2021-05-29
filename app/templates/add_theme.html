@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Add Post</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.theme_from_date.label }}<br>
+            {{ form.theme_from_date}}<br>
+            {% for error in form.theme_from_date.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.theme_to_date.label }}<br>
+            {{ form.theme_to_date}}<br>
+            {% for error in form.theme_to_date.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.theme.label }}<br>
+            {{ form.theme}}<br>
+            {% for error in form.theme.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.theme_hashtag.label }}<br>
+            {{ form.theme_hashtag}}<br>
+            {% for error in form.theme_hashtag.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>        
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

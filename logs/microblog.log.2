@@ -1,0 +1,126 @@
+2021-05-27 17:15:14,591 INFO: Microblog startup [in /home/bitnami/aeocb/app/__init__.py:30]
+2021-05-28 09:32:54,028 INFO: Microblog startup [in /home/bitnami/aeocb/app/__init__.py:32]
+2021-05-28 09:34:12,056 INFO: Microblog startup [in /home/bitnami/aeocb/app/__init__.py:32]
+2021-05-28 09:41:55,085 INFO: Microblog startup [in /home/bitnami/aeocb/app/__init__.py:32]
+2021-05-28 09:47:46,137 INFO: Microblog startup [in /home/bitnami/aeocb/app/__init__.py:34]
+2021-05-28 14:28:08,433 INFO: Microblog startup [in /home/bitnami/aeocb/app/__init__.py:34]
+2021-05-28 15:45:28,852 INFO: Microblog startup [in /home/bitnami/aeocb/app/__init__.py:34]
+2021-05-28 15:50:35,485 INFO: Microblog startup [in /home/bitnami/aeocb/app/__init__.py:34]
+2021-05-28 15:52:57,827 ERROR: Exception on /reset_password_request [POST] [in /home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py:1454]
+Traceback (most recent call last):
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/bitnami/aeocb/app/routes.py", line 86, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/bitnami/aeocb/app/email.py", line 11, in send_password_reset_email
+    token = user.get_reset_password_token()
+AttributeError: 'User' object has no attribute 'get_reset_password_token'
+2021-05-28 15:54:56,649 ERROR: Exception on /reset_password_request [POST] [in /home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py:1454]
+Traceback (most recent call last):
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/bitnami/aeocb/app/routes.py", line 86, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/bitnami/aeocb/app/email.py", line 11, in send_password_reset_email
+    token = user.get_reset_password_token()
+AttributeError: 'User' object has no attribute 'get_reset_password_token'
+2021-05-28 15:55:24,151 ERROR: Exception on /reset_password_request [POST] [in /home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py:1454]
+Traceback (most recent call last):
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/bitnami/aeocb/app/routes.py", line 86, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/bitnami/aeocb/app/email.py", line 11, in send_password_reset_email
+    token = user.get_reset_password_token()
+AttributeError: 'User' object has no attribute 'get_reset_password_token'
+2021-05-28 15:55:33,610 INFO: Microblog startup [in /home/bitnami/aeocb/app/__init__.py:34]
+2021-05-28 15:55:48,380 ERROR: Exception on /reset_password_request [POST] [in /home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py:1454]
+Traceback (most recent call last):
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/bitnami/aeocb/app/routes.py", line 86, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/bitnami/aeocb/app/email.py", line 11, in send_password_reset_email
+    token = user.get_reset_password_token()
+  File "/home/bitnami/aeocb/app/models.py", line 30, in get_reset_password_token
+    return jwt.encode(
+NameError: name 'jwt' is not defined
+2021-05-28 15:56:40,782 INFO: Microblog startup [in /home/bitnami/aeocb/app/__init__.py:34]
+2021-05-28 15:56:51,771 ERROR: Exception on /reset_password_request [POST] [in /home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py:1454]
+Traceback (most recent call last):
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/bitnami/aeocb/app/routes.py", line 86, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/bitnami/aeocb/app/email.py", line 11, in send_password_reset_email
+    token = user.get_reset_password_token()
+  File "/home/bitnami/aeocb/app/models.py", line 32, in get_reset_password_token
+    {'reset_password': self.id, 'exp': time() + expires_in},
+NameError: name 'time' is not defined
+2021-05-28 15:57:44,488 INFO: Microblog startup [in /home/bitnami/aeocb/app/__init__.py:34]
+2021-05-28 15:58:04,255 ERROR: Exception on /reset_password_request [POST] [in /home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py:1454]
+Traceback (most recent call last):
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/bitnami/aeocb/app/routes.py", line 86, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/bitnami/aeocb/app/email.py", line 11, in send_password_reset_email
+    token = user.get_reset_password_token()
+  File "/home/bitnami/aeocb/app/models.py", line 32, in get_reset_password_token
+    return jwt.encode(
+AttributeError: 'str' object has no attribute 'decode'
+2021-05-28 16:00:59,772 INFO: Microblog startup [in /home/bitnami/aeocb/app/__init__.py:34]
+2021-05-28 16:01:15,531 ERROR: Exception on /reset_password_request [POST] [in /home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py:1454]
+Traceback (most recent call last):
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bitnami/aeocb/venv/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/bitnami/aeocb/app/routes.py", line 86, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/bitnami/aeocb/app/email.py", line 11, in send_password_reset_email
+    token = user.get_reset_password_token()
+  File "/home/bitnami/aeocb/app/models.py", line 32, in get_reset_password_token
+    return jwt.encode(
+AttributeError: 'str' object has no attribute 'decode'
+2021-05-28 16:03:24,203 INFO: Microblog startup [in /home/bitnami/aeocb/app/__init__.py:34]
