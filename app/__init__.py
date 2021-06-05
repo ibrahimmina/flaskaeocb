@@ -7,6 +7,7 @@ from logging.handlers import RotatingFileHandler
 import os
 from flask_mail import Mail
 import logging
+from flask_bootstrap import Bootstrap
 
 
 app = Flask(__name__)
@@ -16,6 +17,17 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
 mail = Mail(app)
+bootstrap = Bootstrap(app)
+
+
+from .admin import admin as admin_blueprint
+app.register_blueprint(admin_blueprint, url_prefix='/admin')
+
+from .home import home as home_blueprint
+app.register_blueprint(home_blueprint, url_prefix='/home')
+
+from .auth import bp as auth_blueprint
+app.register_blueprint(auth_blueprint, url_prefix='/auth')
 
 with app.app_context():
     from . import cli

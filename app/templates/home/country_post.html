@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for post in country_post %}
+    <div class="card mb-3">
+        
+        <div class="card-body">
+          <h5 class="card-title">{{ post.id }}</a></h5>
+        </div>
+      </div>
+    {% endfor %}
+{% endblock %}

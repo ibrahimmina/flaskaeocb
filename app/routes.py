@@ -14,20 +14,11 @@ from app.models import Post, Theme, UserRoles, Country, UserCountries
 
 
 @app.route('/')
-@app.route('/index')
+@app.route('/')
 def index():
-    user = {'username': 'French Cluster'}
-    posts = [
-        {
-            'author': {'username': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
-    return render_template("index.html", title='Home Page', posts=posts)
+    countries = Country.query.filter_by(status=1).all()
+
+    return render_template("index.html", title='Home Page', countries=countries)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

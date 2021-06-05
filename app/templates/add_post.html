@@ -1,51 +1,11 @@
 {% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
-{% block content %}
-    <h1>Add Post</h1>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.english.label }}<br>
-            {{ form.english}}<br>
-            {% for error in form.english.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.french.label }}<br>
-            {{ form.french}}<br>
-            {% for error in form.french.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.kirundi.label }}<br>
-            {{ form.kirundi}}<br>
-            {% for error in form.kirundi.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.post_type.label }}<br>
-            {{ form.post_type}}<br>
-            {% for error in form.post_type.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.hashtag.label }}<br>
-            {{ form.hashtag}}<br>
-            {% for error in form.hashtag.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.final_text.label }}<br>
-            {{ form.final_text}}<br>
-            {% for error in form.final_text.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>                
-        <p>{{ form.submit() }}</p>
-    </form>
+{% block app_content %}
+    <h1>Register</h1>
+    <div class="row">
+        <div class="col-md-4">
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
 {% endblock %}

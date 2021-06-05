@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hi, {{ current_user.username }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
+    {% for country in countries %}
+    <div class="card mb-3">
+        <img class="card-img-top" src="https://www.countryflags.io/{{ country.code }}/flat/64.png" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><a href="{{ url_for('home.countryPage', country_id=country.id) }}">{{ country.name }}</a></h5>
+        </div>
+      </div>
     {% endfor %}
 {% endblock %}

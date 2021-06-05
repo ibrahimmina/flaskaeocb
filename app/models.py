@@ -6,6 +6,7 @@ from app import login
 import jwt
 from hashlib import md5
 from time import time
+from flask import url_for
 
 
 @login.user_loader
@@ -17,11 +18,21 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    posts = db.relationship('Post', backref='author', lazy='dynamic')
+    themes = db.relationship('Theme', backref='user', lazy=True)
+    posts = db.relationship('Post', backref='user', lazy=True)
     roles = db.relationship('Role', secondary='user_roles',
             backref=db.backref('users', lazy='dynamic'))
     countries = db.relationship('Country', secondary='user_countries',
             backref=db.backref('users', lazy='dynamic'))
+
+    def to_dict(self, include_email=False, include_themes=False, include_roles=False):
+        data = {
+            'id': self.id,
+            'username': self.username,
+        }
+        if include_email:
+            data['email'] = self.email
+        return data
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -56,11 +67,26 @@ class Role(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(50), unique=True)
 
+    def to_dict(self):
+        data = {
+            'id': self.id,
+            'name': self.name,
+        }
+        return data
+
 # Define UserRoles model
 class UserRoles(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id', ondelete='CASCADE'))
     role_id = db.Column(db.Integer(), db.ForeignKey('role.id', ondelete='CASCADE'))
+
+    def to_dict(self):
+        data = {
+            'id': self.id,
+            'user_id': self.user_id,
+            'role_id': self.role_id,
+        }
+        return data
 
 # Define Role model
 class Country(db.Model):
@@ -69,22 +95,80 @@ class Country(db.Model):
     code = db.Column(db.String(3), unique=True)
     status = db.Column(db.Integer())
 
+    def to_dict(self):
+        data = {
+            'id': self.id,
+            'name': self.name,
+            'code': self.code,
+            'status': self.status,            
+        }
+        return data
+
 # Define UserRoles model
 class UserCountries(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id', ondelete='CASCADE'))
     country_id = db.Column(db.Integer(), db.ForeignKey('country.id', ondelete='CASCADE'))
 
+    def to_dict(self):
+        data = {
+            'id': self.id,
+            'user_id': self.user_id,
+            'country_id': self.country_id,         
+        }
+        return data
+
+# Define UserRoles model
+class PostCountries(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    post_id = db.Column(db.Integer(), db.ForeignKey('post.id', ondelete='CASCADE'))
+    country_id = db.Column(db.Integer(), db.ForeignKey('country.id', ondelete='CASCADE'))
+
+    def to_dict(self):
+        data = {
+            'id': self.id,
+            'post_id': self.post_id,
+            'country_id': self.country_id,         
+        }
+        return data
+
+# Define UserRoles model
+class ThemeCountries(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    theme_id = db.Column(db.Integer(), db.ForeignKey('theme.id', ondelete='CASCADE'))
+    country_id = db.Column(db.Integer(), db.ForeignKey('country.id', ondelete='CASCADE'))
+
+    def to_dict(self):
+        data = {
+            'id': self.id,
+            'theme_id': self.theme_id,
+            'country_id': self.country_id,         
+        }
+        return data
+
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    english = db.Column(db.String)
-    french = db.Column(db.String)
-    kirundi = db.Column(db.String)
+    language_1 = db.Column(db.String)
+    language_2 = db.Column(db.String)
+    language_3 = db.Column(db.String)
     final_text = db.Column(db.String)
-    post_type = db.Column(db.String)
     hashtag = db.Column(db.String)
+    post_image_url = db.Column(db.String)
+    post_date_time = db.Column(db.DateTime)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    theme_id = db.Column(db.Integer, db.ForeignKey('theme.id'))
+    country_id = db.Column(db.Integer, db.ForeignKey('country.id'))
+    post_status_id = db.Column(db.Integer, db.ForeignKey('post_status.id'))
+    post_type_id = db.Column(db.Integer, db.ForeignKey('post_type.id'))
+
+    def to_dict(self):
+        data = {
+            'id': self.id,
+            'theme_id': self.theme_id,
+            'country_id': self.country_id,         
+        }
+        return data
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
@@ -97,6 +181,24 @@ class Theme(db.Model):
     theme_hashtag = db.Column(db.String)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    countries = db.relationship('Country', secondary='theme_countries',
+            backref=db.backref('themes', lazy='dynamic'))    
 
     def __repr__(self):
         return '<Theme {}>'.format(self.body)
+
+class PostStatus(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    post_status = db.Column(db.String)
+    posts = db.relationship('Post', backref='post_status', lazy=True)
+
+    def __repr__(self):
+        return '<Post Status {}>'.format(self.body)
+
+class PostType(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    post_type = db.Column(db.String)
+    posts = db.relationship('Post', backref='post_type', lazy=True)  
+
+    def __repr__(self):
+        return '<Post Type {}>'.format(self)
