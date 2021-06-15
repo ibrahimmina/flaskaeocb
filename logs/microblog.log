@@ -50,3 +50,4 @@ smtplib.SMTPNotSupportedError: STARTTLS extension not supported by server.
 2021-05-29 15:00:39,948 INFO: Microblog startup [in /home/bitnami/aeocb/app/__init__.py:36]
 2021-05-29 15:24:14,070 INFO: Microblog startup [in /home/bitnami/aeocb/app/__init__.py:36]
 2021-05-29 15:26:38,727 INFO: Microblog startup [in /home/bitnami/aeocb/app/__init__.py:36]
+2021-06-06 18:53:40,301 INFO: Microblog startup [in /home/debian/aeocb/app/__init__.py:48]

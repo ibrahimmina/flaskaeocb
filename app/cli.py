@@ -6,6 +6,10 @@ from app.models import User, Post, Role, UserRoles, Theme, Country, UserCountrie
 def resetcounties_command():
     print ("resetcounties")
     #for all records
+    db.session.query(Role).delete()
+    db.session.commit()
+    db.session.add(Role(name='Admin'))
+    db.session.commit()
     db.session.query(Country).delete()
     db.session.commit()
     db.session.add(Country(name='Andorra', code='AD', status=0))

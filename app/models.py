@@ -146,6 +146,7 @@ class ThemeCountries(db.Model):
         }
         return data
 
+
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     language_1 = db.Column(db.String)
@@ -159,8 +160,8 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     theme_id = db.Column(db.Integer, db.ForeignKey('theme.id'))
     country_id = db.Column(db.Integer, db.ForeignKey('country.id'))
-    post_status_id = db.Column(db.Integer, db.ForeignKey('post_status.id'))
-    post_type_id = db.Column(db.Integer, db.ForeignKey('post_type.id'))
+    post_status = db.Column(db.String)
+    post_type= db.Column(db.String)
 
     def to_dict(self):
         data = {
@@ -187,18 +188,4 @@ class Theme(db.Model):
     def __repr__(self):
         return '<Theme {}>'.format(self.body)
 
-class PostStatus(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    post_status = db.Column(db.String)
-    posts = db.relationship('Post', backref='post_status', lazy=True)
 
-    def __repr__(self):
-        return '<Post Status {}>'.format(self.body)
-
-class PostType(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    post_type = db.Column(db.String)
-    posts = db.relationship('Post', backref='post_type', lazy=True)  
-
-    def __repr__(self):
-        return '<Post Type {}>'.format(self)

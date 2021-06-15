@@ -8,6 +8,7 @@ import os
 from flask_mail import Mail
 import logging
 from flask_bootstrap import Bootstrap
+#from .reset_db import reset_db_command
 
 
 app = Flask(__name__)
@@ -18,7 +19,7 @@ login = LoginManager(app)
 login.login_view = 'login'
 mail = Mail(app)
 bootstrap = Bootstrap(app)
-
+#reset_db_command(db)
 
 from .admin import admin as admin_blueprint
 app.register_blueprint(admin_blueprint, url_prefix='/admin')
@@ -31,6 +32,7 @@ app.register_blueprint(auth_blueprint, url_prefix='/auth')
 
 with app.app_context():
     from . import cli
+
 
 if not app.debug:
     # ...

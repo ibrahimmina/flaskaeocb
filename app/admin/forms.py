@@ -5,7 +5,7 @@ from app.models import User
 from wtforms.fields.html5 import DateField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from app import app, db
-from app.models import Post, Theme, UserRoles, Country, UserCountries, PostType
+from app.models import Post, Theme, UserRoles, Country, UserCountries
 
 class PostForm(FlaskForm):
     post_date_time = DateField('post_date_time', validators=[DataRequired()])
@@ -13,7 +13,7 @@ class PostForm(FlaskForm):
     language_2 = StringField('language_2')
     language_3 = StringField('language_3')
     final_text = StringField('Final Text')
-    post_type = QuerySelectField('Post Type', query_factory=PostType.query.all())
+    post_type = StringField('Post Type')
     hashtag = StringField('hashtag')
     post_image_url = FileField('Post Image')
     submit = SubmitField('Add/Edit Post')
@@ -25,9 +25,6 @@ class ThemeForm(FlaskForm):
     theme = StringField('theme', validators=[DataRequired()])
     theme_hashtag = StringField('theme_hashtag', validators=[DataRequired()])
     submit = SubmitField('Add Theme')
-
-def post_type_choices():      
-    return db.session.query(PostType).all()
 
 
 

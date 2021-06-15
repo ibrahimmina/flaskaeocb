@@ -5,7 +5,7 @@ class Config(object):
     
 	SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
 
-	SQLALCHEMY_DATABASE_URI = 'postgresql://aeocb:aeocb@192.168.1.25:5432/aeocb'
+	SQLALCHEMY_DATABASE_URI = 'postgresql://debian:debian@localhost/aeocb'
     
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
 
